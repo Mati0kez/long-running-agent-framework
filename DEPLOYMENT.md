@@ -1,15 +1,37 @@
 # Long-Running Agent Framework - 部署指南
 
-## 部署步骤
+## 快速部署
 
-### 步骤 1: 获取框架
+### 步骤 1: 在 GitHub 创建仓库
+
+1. 打开 https://github.com/new
+2. 仓库名称: `long-running-agent-framework`
+3. 描述: `AI Agent Framework for Multi-Context Window Development`
+4. 选择 Public
+5. **不要**勾选 "Add a README file"
+6. 点击 "Create repository"
+
+### 步骤 2: 推送代码
 
 ```bash
-# 从 GitHub 克隆
-git clone https://github.com/YOUR_USERNAME/long-running-agent-framework.git D:\long-running-agent-framework
+cd D:\long-running-agent-framework
 
-# 或从本地复制
-cp -r ./long-running-agent-framework D:\long-running-agent-framework
+# 添加远程仓库
+git remote add origin https://github.com/Mati0kez/long-running-agent-framework.git
+
+# 推送到 GitHub
+git branch -M main
+git push -u origin main
+```
+
+### 步骤 3: 克隆到其他机器
+
+```bash
+# 在其他机器上克隆
+git clone https://github.com/Mati0kez/long-running-agent-framework.git
+
+# 或指定位置
+git clone https://github.com/Mati0kez/long-running-agent-framework.git D:\long-running-agent-framework
 ```
 
 ### 步骤 2: 创建全局 Skill
