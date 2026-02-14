@@ -1,0 +1,110 @@
+#!/bin/bash
+# Long-Running Agent Framework CLI
+# Usage: lra init [project-path]
+
+FRAMEWORK_ROOT="D:/long-running-agent-framework"
+
+command=$1
+
+case "$command" in
+    "")
+        echo ""
+        echo "Long-Running Agent Framework CLI"
+        echo ""
+        echo "Usage:"
+        echo "  lra init [path]     Initialize framework in project"
+        echo "  lra status          Show current project status"
+        echo "  lra prompt [type]   Show agent prompt file path"
+        echo ""
+        echo "Examples:"
+        echo "  lra init                    # Initialize in current directory"
+        echo "  lra init /path/to/project   # Initialize in specific directory"
+        echo "  lra status                  # Check project status"
+        echo "  lra prompt coding           # Get coding agent prompt path"
+        echo ""
+        ;;
+    "init")
+        PROJECT_PATH="${2:-$(pwd)}"
+
+        echo "Initializing Long-Running Agent Framework..."
+        echo "Project path: $PROJECT_PATH"
+
+        # Create .agent directory
+        mkdir -p "$PROJECT_PATH/.agent/screenshots"
+        mkdir -p "$PROJECT_PATH/.agent/console-logs"
+
+        # Copy template files
+        cp "$FRAMEWORK_ROOT/examples/web-app-template/.agent/agent_state.json" "$PROJECT_PATH/.agent/" 2>/dev/null || true
+        cp "$FRAMEWORK_ROOT/templates/feature-list.json" "$PROJECT_PATH/.agent/feature_list.json" 2>/dev/null || true
+
+        # Create init.sh if not exists
+        if [ ! -f "$PROJECT_PATH/init.sh" ]; then
+            echo '#!/bin/bash' > "$PROJECT_PATH/init.sh"
+            echo 'npm run dev' >> "$PROJECT_PATH/init.sh"
+            chmod +x "$PROJECT_PATH/init.sh"
+        fi
+
+        # Create CLAUDE.md template if not exists
+        if [ ! -f "$PROJECT_PATH/CLAUDE.md" ]; then
+            echo "# Project: [Your Project Name]" > "$PROJECT_PATH/CLAUDE.md"
+            echo "" >> "$PROJECT_PATH/CLAUDE.md"
+            echo "## Description" >> "$PROJECT_PATH/CLAUDE.md"
+            echo "[Describe your project here]" >> "$PROJECT_PATH/CLAUDE.md"
+            echo "" >> "$PROJECT_PATH/CLAUDE.md"
+            echo "## Tech Stack" >> "$PROJECT_PATH/CLAUDE.md"
+            echo "- [List your tech stack]" >> "$PROJECT_PATH/CLAUDE.md"
+        fi
+
+        echo ""
+        echo "========================================"
+        echo "Framework initialized successfully!"
+        echo "========================================"
+        echo ""
+        echo "Project structure:"
+        echo "  $PROJECT_PATH"
+        echo "  ├── .agent/"
+        echo "  │   ├── agent_state.json"
+        echo "  │   ├── feature_list.json"
+        echo "  │   ├── screenshots/"
+        echo "  │   └── console-logs/"
+        echo "  ├── init.sh"
+        echo "  └── CLAUDE.md"
+        echo ""
+        echo "Next steps:"
+        echo "  1. Edit CLAUDE.md with your project details"
+        echo "  2. Define features in .agent/feature_list.json"
+        echo "  3. Run: claude --prompt-file $FRAMEWORK_ROOT/agents/coding-agent-enhanced.md"
+        echo ""
+        ;;
+    "status")
+        echo "Checking project status..."
+        if [ -f ".agent/agent_state.json" ]; then
+            cat ".agent/agent_state.json"
+        else
+            echo "Not initialized. Run: lra init"
+        fi
+        ;;
+    "prompt")
+        echo ""
+        echo "Available agent prompts:"
+        echo "  coding       - Coding agent (enhanced with 4-step workflow)"
+        echo "  coding-basic - Basic coding agent"
+        echo "  initializer  - Project initialization agent"
+        echo "  testing      - Testing agent"
+        echo ""
+        agent_type="${2:-coding}"
+        case "$agent_type" in
+            "coding")
+                echo "Prompt file: $FRAMEWORK_ROOT/agents/coding-agent-enhanced.md"
+                echo ""
+                echo "Run: claude --prompt-file \"$FRAMEWORK_ROOT/agents/coding-agent-enhanced.md\""
+                ;;
+            "initializer")
+                echo "Prompt file: $FRAMEWORK_ROOT/agents/initializer-agent-enhanced.md"
+                ;;
+            "testing")
+                echo "Prompt file: $FRAMEWORK_ROOT/agents/testing-agent.md"
+                ;;
+        esac
+        ;;
+esac

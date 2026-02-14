@@ -1,0 +1,43 @@
+# Web Application Specification
+
+## Project: Claude Chat Clone
+
+A real-time chat application similar to claude.ai with AI-powered conversations.
+
+## Core Features
+
+### Authentication
+- User can sign up with email and password
+- User can log in with existing credentials
+- User can log out
+- Session persistence across browser refreshes
+
+### Chat Interface
+- User can create new chat conversations
+- User can send text messages
+- User receives AI responses in real-time (streaming)
+- User can see conversation history in sidebar
+- User can switch between conversations
+
+### UI/UX
+- Responsive design (mobile and desktop)
+- Dark/Light theme toggle
+- Loading states for AI responses
+- Error handling with user-friendly messages
+
+### Technical Requirements
+- React frontend with TypeScript
+- Node.js backend API
+- PostgreSQL database
+- WebSocket for real-time communication
+- JWT authentication
+
+## Tech Stack
+- Frontend: React 18, TypeScript, Tailwind CSS
+- Backend: Node.js, Express
+- Database: PostgreSQL
+- Auth: JWT
+- Real-time: Socket.io
+
+## Target Features Count
+Aim for 150-200 granular features for comprehensive coverage.

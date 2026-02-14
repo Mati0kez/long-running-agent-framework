@@ -1,0 +1,9 @@
+{
+  "desired_state": "pause",
+  "current_state": "pause",
+  "timestamp": "2026-02-14T00:00:00.000Z",
+  "setBy": "system",
+  "note": "Project initialized, awaiting first session",
+  "phase": "initializer",
+  "restart_count": 0
+}

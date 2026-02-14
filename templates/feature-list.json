@@ -1,0 +1,186 @@
+{
+  "projectName": "Example Project",
+  "description": "Example feature list for a web application",
+  "createdAt": "2026-02-13T00:00:00.000Z",
+  "updatedAt": "2026-02-13T00:00:00.000Z",
+  "totalFeatures": 25,
+  "completedFeatures": 0,
+  "features": [
+    {
+      "id": "I001",
+      "category": "functional",
+      "description": "Development server starts successfully",
+      "steps": [
+        "Run init.sh or npm run dev",
+        "Verify server starts without errors",
+        "Verify app is accessible at expected URL",
+        "Verify hot reload works"
+      ],
+      "passes": false,
+      "priority": 1,
+      "dependencies": []
+    },
+    {
+      "id": "I002",
+      "category": "functional",
+      "description": "Production build completes successfully",
+      "steps": [
+        "Run build command",
+        "Verify no build errors",
+        "Verify output files are generated",
+        "Verify build size is reasonable"
+      ],
+      "passes": false,
+      "priority": 1,
+      "dependencies": []
+    },
+    {
+      "id": "F001",
+      "category": "functional",
+      "description": "User can navigate to the home page",
+      "steps": [
+        "Open browser and navigate to the app",
+        "Verify home page loads without errors",
+        "Verify page title is correct",
+        "Verify main content is visible"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["I001"]
+    },
+    {
+      "id": "F002",
+      "category": "functional",
+      "description": "User can create a new account",
+      "steps": [
+        "Navigate to signup page",
+        "Enter valid email and password",
+        "Click signup button",
+        "Verify account is created",
+        "Verify user is redirected to dashboard"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F003",
+      "category": "functional",
+      "description": "User can log in with existing account",
+      "steps": [
+        "Navigate to login page",
+        "Enter email and password",
+        "Click login button",
+        "Verify user is authenticated",
+        "Verify redirect to dashboard"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F002"]
+    },
+    {
+      "id": "F004",
+      "category": "ui",
+      "description": "Navigation menu is visible and functional",
+      "steps": [
+        "Verify navigation menu is visible",
+        "Click each navigation link",
+        "Verify correct page loads for each link",
+        "Verify active state is highlighted"
+      ],
+      "passes": false,
+      "priority": 20,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F005",
+      "category": "ui",
+      "description": "Responsive design works on mobile devices",
+      "steps": [
+        "Resize browser to mobile width",
+        "Verify layout adapts correctly",
+        "Verify all interactive elements are tappable",
+        "Verify no horizontal scroll"
+      ],
+      "passes": false,
+      "priority": 30,
+      "dependencies": ["F004"]
+    },
+    {
+      "id": "E001",
+      "category": "error-handling",
+      "description": "Invalid login shows appropriate error message",
+      "steps": [
+        "Navigate to login page",
+        "Enter invalid credentials",
+        "Click login button",
+        "Verify error message is displayed",
+        "Verify user remains on login page"
+      ],
+      "passes": false,
+      "priority": 20,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "E002",
+      "category": "error-handling",
+      "description": "Network errors are handled gracefully",
+      "steps": [
+        "Disable network connection",
+        "Attempt to perform an action",
+        "Verify error message is shown",
+        "Verify app does not crash",
+        "Re-enable network and retry"
+      ],
+      "passes": false,
+      "priority": 20,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "S001",
+      "category": "security",
+      "description": "Passwords are hashed before storage",
+      "steps": [
+        "Create a new account",
+        "Check database for password storage",
+        "Verify password is not stored in plain text",
+        "Verify secure hashing algorithm is used"
+      ],
+      "passes": false,
+      "priority": 5,
+      "dependencies": ["F002"]
+    },
+    {
+      "id": "A001",
+      "category": "accessibility",
+      "description": "All images have alt text",
+      "steps": [
+        "Scan all pages for images",
+        "Verify each image has alt attribute",
+        "Verify alt text is descriptive",
+        "Verify decorative images have empty alt"
+      ],
+      "passes": false,
+      "priority": 40,
+      "dependencies": ["F001"]
+    }
+  ],
+  "_meta": {
+    "categories": [
+      "functional",
+      "ui",
+      "ux",
+      "performance",
+      "security",
+      "accessibility",
+      "integration",
+      "error-handling"
+    ],
+    "priorityGuide": {
+      "1-10": "Critical/Blocking",
+      "11-30": "High Priority",
+      "31-50": "Medium Priority",
+      "51-100": "Low Priority"
+    }
+  }
+}

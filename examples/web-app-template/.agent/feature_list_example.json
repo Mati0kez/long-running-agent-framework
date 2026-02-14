@@ -1,0 +1,815 @@
+{
+  "projectName": "Claude Chat Clone - Example Feature List",
+  "createdAt": "2026-02-14T00:00:00.000Z",
+  "updatedAt": "2026-02-14T00:00:00.000Z",
+  "totalFeatures": 50,
+  "completedFeatures": 0,
+  "epics": [
+    {
+      "id": "E001",
+      "name": "Project Foundation",
+      "description": "Project setup, configuration, and base infrastructure",
+      "featureCount": 8
+    },
+    {
+      "id": "E002",
+      "name": "Authentication",
+      "description": "User sign up, login, and session management",
+      "featureCount": 10
+    },
+    {
+      "id": "E003",
+      "name": "Chat Core",
+      "description": "Core chat functionality including messaging and conversations",
+      "featureCount": 12
+    },
+    {
+      "id": "E004",
+      "name": "UI Components",
+      "description": "Reusable UI components and design system",
+      "featureCount": 10
+    },
+    {
+      "id": "E005",
+      "name": "Responsive Design",
+      "description": "Mobile and tablet responsive adaptations",
+      "featureCount": 5
+    },
+    {
+      "id": "E006",
+      "name": "Polish & Performance",
+      "description": "Final optimizations and UX improvements",
+      "featureCount": 5
+    }
+  ],
+  "features": [
+    {
+      "id": "F001",
+      "epic": "E001",
+      "category": "functional",
+      "description": "Project structure is initialized with correct directories",
+      "steps": [
+        "Verify src/ directory exists",
+        "Verify src/components/ directory exists",
+        "Verify src/hooks/ directory exists",
+        "Verify src/api/ directory exists",
+        "Verify package.json exists"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": []
+    },
+    {
+      "id": "F002",
+      "epic": "E001",
+      "category": "functional",
+      "description": "TypeScript configuration is set up correctly",
+      "steps": [
+        "Verify tsconfig.json exists",
+        "Run npx tsc --noEmit",
+        "Verify no TypeScript errors",
+        "Check strict mode is enabled"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F003",
+      "epic": "E001",
+      "category": "functional",
+      "description": "Tailwind CSS is configured and working",
+      "steps": [
+        "Verify tailwind.config.js exists",
+        "Verify CSS imports are correct",
+        "Apply a Tailwind class to a component",
+        "Verify styles are applied correctly"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F004",
+      "epic": "E001",
+      "category": "functional",
+      "description": "Development server starts successfully",
+      "steps": [
+        "Run npm run dev",
+        "Verify server starts without errors",
+        "Navigate to http://localhost:3000",
+        "Verify page loads"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F001", "F002"]
+    },
+    {
+      "id": "F005",
+      "epic": "E001",
+      "category": "functional",
+      "description": "API server starts successfully",
+      "steps": [
+        "Run npm run server",
+        "Verify API server starts",
+        "Make GET request to /health",
+        "Verify health check returns 200"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F006",
+      "epic": "E001",
+      "category": "functional",
+      "description": "Database connection is established",
+      "steps": [
+        "Verify database config exists",
+        "Test database connection",
+        "Verify migrations can run",
+        "Check connection pooling works"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F005"]
+    },
+    {
+      "id": "F007",
+      "epic": "E001",
+      "category": "functional",
+      "description": "Environment variables are configured",
+      "steps": [
+        "Verify .env.example exists",
+        "Verify required variables are documented",
+        "Test variables are loaded correctly",
+        "Verify sensitive data is not hardcoded"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F001"]
+    },
+    {
+      "id": "F008",
+      "epic": "E001",
+      "category": "security",
+      "description": "Git repository is initialized with proper .gitignore",
+      "steps": [
+        "Verify .git directory exists",
+        "Verify .gitignore includes node_modules",
+        "Verify .gitignore includes .env",
+        "Verify initial commit exists"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": []
+    },
+    {
+      "id": "F009",
+      "epic": "E002",
+      "category": "functional",
+      "description": "User can view sign up form",
+      "steps": [
+        "Navigate to /signup",
+        "Verify form is visible",
+        "Verify email field exists",
+        "Verify password field exists",
+        "Verify submit button exists"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F004"]
+    },
+    {
+      "id": "F010",
+      "epic": "E002",
+      "category": "functional",
+      "description": "User can create a new account",
+      "steps": [
+        "Navigate to /signup",
+        "Enter valid email",
+        "Enter valid password",
+        "Click submit button",
+        "Verify account is created",
+        "Verify redirect to login or dashboard"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F009", "F006"]
+    },
+    {
+      "id": "F011",
+      "epic": "E002",
+      "category": "functional",
+      "description": "Sign up form validates email format",
+      "steps": [
+        "Navigate to /signup",
+        "Enter invalid email (no @)",
+        "Click submit",
+        "Verify error message appears",
+        "Verify form is not submitted"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F009"]
+    },
+    {
+      "id": "F012",
+      "epic": "E002",
+      "category": "functional",
+      "description": "Sign up form validates password strength",
+      "steps": [
+        "Navigate to /signup",
+        "Enter weak password (< 8 chars)",
+        "Click submit",
+        "Verify error message appears",
+        "Verify form is not submitted"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F009"]
+    },
+    {
+      "id": "F013",
+      "epic": "E002",
+      "category": "functional",
+      "description": "User can view login form",
+      "steps": [
+        "Navigate to /login",
+        "Verify form is visible",
+        "Verify email field exists",
+        "Verify password field exists",
+        "Verify submit button exists"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F004"]
+    },
+    {
+      "id": "F014",
+      "epic": "E002",
+      "category": "functional",
+      "description": "User can log in with valid credentials",
+      "steps": [
+        "Create test user first",
+        "Navigate to /login",
+        "Enter valid email",
+        "Enter valid password",
+        "Click submit",
+        "Verify redirect to dashboard",
+        "Verify user is authenticated"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F013", "F010"]
+    },
+    {
+      "id": "F015",
+      "epic": "E002",
+      "category": "functional",
+      "description": "Login shows error for invalid credentials",
+      "steps": [
+        "Navigate to /login",
+        "Enter invalid email",
+        "Enter invalid password",
+        "Click submit",
+        "Verify error message appears",
+        "Verify user is not logged in"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F013"]
+    },
+    {
+      "id": "F016",
+      "epic": "E002",
+      "category": "functional",
+      "description": "User can log out",
+      "steps": [
+        "Log in as test user",
+        "Click logout button",
+        "Verify redirect to login page",
+        "Verify session is cleared"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": ["F014"]
+    },
+    {
+      "id": "F017",
+      "epic": "E002",
+      "category": "functional",
+      "description": "Session persists across browser refresh",
+      "steps": [
+        "Log in as test user",
+        "Refresh the page",
+        "Verify user is still logged in",
+        "Verify dashboard is still accessible"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F014"]
+    },
+    {
+      "id": "F018",
+      "epic": "E002",
+      "category": "security",
+      "description": "Protected routes redirect to login when not authenticated",
+      "steps": [
+        "Log out if logged in",
+        "Navigate to /dashboard directly",
+        "Verify redirect to /login",
+        "Verify dashboard content is not visible"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": ["F014"]
+    },
+    {
+      "id": "F019",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can see the main chat interface",
+      "steps": [
+        "Log in as test user",
+        "Navigate to /chat",
+        "Verify chat layout is visible",
+        "Verify sidebar is visible",
+        "Verify message area is visible",
+        "Verify input field is visible"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F014"]
+    },
+    {
+      "id": "F020",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can create a new chat conversation",
+      "steps": [
+        "Log in and navigate to /chat",
+        "Click 'New Chat' button",
+        "Verify new conversation is created",
+        "Verify conversation appears in sidebar",
+        "Verify chat area shows welcome state"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F019"]
+    },
+    {
+      "id": "F021",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can send a text message",
+      "steps": [
+        "Log in and create/open a chat",
+        "Type message in input field",
+        "Press Enter or click Send",
+        "Verify message appears in chat",
+        "Verify message shows correct timestamp"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F020"]
+    },
+    {
+      "id": "F022",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User receives AI response (streaming)",
+      "steps": [
+        "Send a message in chat",
+        "Verify AI starts responding",
+        "Verify response streams in real-time",
+        "Verify complete response is displayed"
+      ],
+      "passes": false,
+      "priority": 10,
+      "dependencies": ["F021"]
+    },
+    {
+      "id": "F023",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can see conversation history in sidebar",
+      "steps": [
+        "Create multiple conversations",
+        "Verify all appear in sidebar",
+        "Verify most recent is at top",
+        "Verify conversation titles are correct"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": ["F020"]
+    },
+    {
+      "id": "F024",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can switch between conversations",
+      "steps": [
+        "Create multiple conversations",
+        "Click on different conversation in sidebar",
+        "Verify chat content updates",
+        "Verify messages from selected conversation are shown"
+      ],
+      "passes": false,
+      "priority": 9,
+      "dependencies": ["F023"]
+    },
+    {
+      "id": "F025",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can delete a conversation",
+      "steps": [
+        "Create a conversation",
+        "Click delete button",
+        "Confirm deletion",
+        "Verify conversation is removed from sidebar",
+        "Verify another conversation is selected"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F023"]
+    },
+    {
+      "id": "F026",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can rename a conversation",
+      "steps": [
+        "Create a conversation",
+        "Click rename/edit button",
+        "Enter new name",
+        "Save changes",
+        "Verify new name appears in sidebar"
+      ],
+      "passes": false,
+      "priority": 6,
+      "dependencies": ["F023"]
+    },
+    {
+      "id": "F027",
+      "epic": "E003",
+      "category": "functional",
+      "description": "Chat shows loading state while AI responds",
+      "steps": [
+        "Send a message",
+        "Verify loading indicator appears",
+        "Verify loading state during response",
+        "Verify loading clears when complete"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F022"]
+    },
+    {
+      "id": "F028",
+      "epic": "E003",
+      "category": "functional",
+      "description": "Chat handles API errors gracefully",
+      "steps": [
+        "Simulate API error",
+        "Verify error message is shown",
+        "Verify user can retry",
+        "Verify app doesn't crash"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F021"]
+    },
+    {
+      "id": "F029",
+      "epic": "E003",
+      "category": "functional",
+      "description": "User can stop AI response generation",
+      "steps": [
+        "Send a message",
+        "While AI is responding, click Stop",
+        "Verify response stops",
+        "Verify partial response is preserved"
+      ],
+      "passes": false,
+      "priority": 6,
+      "dependencies": ["F022"]
+    },
+    {
+      "id": "F030",
+      "epic": "E003",
+      "category": "functional",
+      "description": "Messages support markdown formatting",
+      "steps": [
+        "Send message with **bold** text",
+        "Send message with *italic* text",
+        "Send message with `code`",
+        "Verify formatting renders correctly"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F021"]
+    },
+    {
+      "id": "F031",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Button component renders correctly",
+      "steps": [
+        "Render Button with default props",
+        "Verify correct styling",
+        "Test click handler",
+        "Test disabled state"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F032",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Input component renders correctly",
+      "steps": [
+        "Render Input with default props",
+        "Verify correct styling",
+        "Test typing functionality",
+        "Test error state"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F033",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Message bubble component renders correctly",
+      "steps": [
+        "Render user message bubble",
+        "Render AI message bubble",
+        "Verify different styles",
+        "Verify timestamp display"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F034",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Sidebar component renders correctly",
+      "steps": [
+        "Render Sidebar with conversations",
+        "Verify conversation list displays",
+        "Test conversation selection",
+        "Verify active state styling"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F035",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Loading spinner component renders",
+      "steps": [
+        "Render LoadingSpinner",
+        "Verify animation plays",
+        "Verify correct size variants",
+        "Verify correct color variants"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F036",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Modal component renders correctly",
+      "steps": [
+        "Trigger modal open",
+        "Verify overlay appears",
+        "Verify content displays",
+        "Test close functionality"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F037",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Toast notification component works",
+      "steps": [
+        "Trigger success toast",
+        "Verify toast appears",
+        "Verify auto-dismiss",
+        "Test manual dismiss"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F038",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Avatar component renders correctly",
+      "steps": [
+        "Render with image",
+        "Render with fallback initials",
+        "Verify correct sizing",
+        "Verify correct shape"
+      ],
+      "passes": false,
+      "priority": 6,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F039",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Dropdown menu component works",
+      "steps": [
+        "Click to open dropdown",
+        "Verify options display",
+        "Test option selection",
+        "Test click-outside close"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F040",
+      "epic": "E004",
+      "category": "ui",
+      "description": "Tooltip component works correctly",
+      "steps": [
+        "Hover over trigger element",
+        "Verify tooltip appears",
+        "Verify correct positioning",
+        "Verify correct content"
+      ],
+      "passes": false,
+      "priority": 5,
+      "dependencies": ["F003"]
+    },
+    {
+      "id": "F041",
+      "epic": "E005",
+      "category": "ui",
+      "description": "Layout is responsive on mobile devices",
+      "steps": [
+        "Resize viewport to 375px width",
+        "Verify sidebar collapses",
+        "Verify content is accessible",
+        "Verify touch targets are adequate"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F019"]
+    },
+    {
+      "id": "F042",
+      "epic": "E005",
+      "category": "ui",
+      "description": "Mobile menu toggle works correctly",
+      "steps": [
+        "On mobile viewport",
+        "Click menu toggle button",
+        "Verify sidebar opens/closes",
+        "Verify overlay appears"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F041"]
+    },
+    {
+      "id": "F043",
+      "epic": "E005",
+      "category": "ui",
+      "description": "Chat input adapts to mobile screen",
+      "steps": [
+        "On mobile viewport",
+        "Verify input field is full width",
+        "Verify send button is accessible",
+        "Test typing on mobile"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F041"]
+    },
+    {
+      "id": "F044",
+      "epic": "E005",
+      "category": "ui",
+      "description": "Tablet layout is optimized",
+      "steps": [
+        "Resize viewport to 768px width",
+        "Verify sidebar behavior",
+        "Verify content layout",
+        "Verify all features accessible"
+      ],
+      "passes": false,
+      "priority": 6,
+      "dependencies": ["F041"]
+    },
+    {
+      "id": "F045",
+      "epic": "E005",
+      "category": "ui",
+      "description": "Large screens utilize extra space",
+      "steps": [
+        "Resize viewport to 1440px+ width",
+        "Verify layout expands appropriately",
+        "Verify content is well-distributed",
+        "Verify no excessive whitespace"
+      ],
+      "passes": false,
+      "priority": 5,
+      "dependencies": ["F019"]
+    },
+    {
+      "id": "F046",
+      "epic": "E006",
+      "category": "performance",
+      "description": "Initial page load is under 3 seconds",
+      "steps": [
+        "Clear browser cache",
+        "Load the application",
+        "Measure load time",
+        "Verify under 3 seconds"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F004"]
+    },
+    {
+      "id": "F047",
+      "epic": "E006",
+      "category": "performance",
+      "description": "Message sending feels responsive",
+      "steps": [
+        "Send a message",
+        "Verify immediate feedback",
+        "Verify no noticeable delay",
+        "Check for jank or stutter"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F021"]
+    },
+    {
+      "id": "F048",
+      "epic": "E006",
+      "category": "ui",
+      "description": "Dark/Light theme toggle works",
+      "steps": [
+        "Click theme toggle button",
+        "Verify theme changes",
+        "Verify all components update",
+        "Verify preference is saved"
+      ],
+      "passes": false,
+      "priority": 6,
+      "dependencies": ["F019"]
+    },
+    {
+      "id": "F049",
+      "epic": "E006",
+      "category": "accessibility",
+      "description": "Keyboard navigation works throughout app",
+      "steps": [
+        "Navigate using Tab key",
+        "Verify focus indicators visible",
+        "Verify all interactive elements reachable",
+        "Test Enter/Space activation"
+      ],
+      "passes": false,
+      "priority": 8,
+      "dependencies": ["F019"]
+    },
+    {
+      "id": "F050",
+      "epic": "E006",
+      "category": "accessibility",
+      "description": "Screen reader can navigate the app",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through main areas",
+        "Verify proper ARIA labels",
+        "Verify logical focus order"
+      ],
+      "passes": false,
+      "priority": 7,
+      "dependencies": ["F019"]
+    }
+  ]
+}

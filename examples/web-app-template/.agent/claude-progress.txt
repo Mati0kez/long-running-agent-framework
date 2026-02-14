@@ -1,0 +1,46 @@
+# Progress Log: Claude Chat Clone
+
+This file tracks the progress of long-running agent sessions.
+Each session documents what was done and what's next.
+
+Created: 2026-02-14T00:00:00.000Z
+================================================================================
+
+## SESSION LOG
+
+(No sessions yet - project awaiting initialization)
+
+---
+
+## Quick Reference
+
+### File Locations
+- Feature List: `.agent/feature_list.json`
+- Tests: `.agent/tests.json`
+- Agent State: `.agent/agent_state.json`
+- Progress: `.agent/claude-progress.txt`
+
+### State Machine
+| State | Meaning |
+|-------|---------|
+| continuous | Run sessions indefinitely |
+| run_once | Execute single session then pause |
+| pause | Wait for human command |
+| terminated | Agent stopped |
+
+### Common Commands
+```bash
+# Check project status
+cat .agent/agent_state.json
+
+# View feature progress
+cat .agent/feature_list.json | grep '"passes"'
+
+# Read session history
+cat .agent/claude-progress.txt
+
+# Start development server
+./init.sh
+```
+
+---
