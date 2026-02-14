@@ -2,6 +2,18 @@
 
 Long-Running Agent Framework 的主入口 skill。用于管理长时间运行的 AI 编码代理。
 
+## 配置
+
+**首次使用前需要设置框架路径：**
+
+```
+LRA_FRAMEWORK_PATH=<你的框架安装路径>
+```
+
+例如：
+- Windows: `D:\long-running-agent-framework`
+- Linux/macOS: `/home/user/long-running-agent-framework`
+
 ## 子 Skills
 
 | Skill | 用途 | 触发词 |
@@ -27,12 +39,6 @@ Long-Running Agent Framework 的主入口 skill。用于管理长时间运行的
 - `初始化项目` 或 `lra init` → 调用 `lra-dev` skill (初始化模式)
 - `开始开发` 或 `lra dev` → 调用 `lra-dev` skill (开发模式)
 - `项目状态` 或 `lra status` → 调用 `lra-dev` skill (状态检查)
-
-## 框架位置
-
-```
-D:\long-running-agent-framework\
-```
 
 ## GitHub 仓库
 

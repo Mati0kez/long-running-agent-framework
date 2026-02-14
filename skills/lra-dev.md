@@ -2,11 +2,11 @@
 
 使用 Long-Running Agent Framework 进行长时间运行的 AI 辅助开发。
 
-## 框架位置
+## 配置
 
-```
-D:\long-running-agent-framework\
-```
+**使用前需要设置框架路径：**
+
+将下方所有 `<LRA_PATH>` 替换为你的实际框架安装路径。
 
 ## 用法
 
@@ -67,7 +67,7 @@ D:\long-running-agent-framework\
    init.sh                   # 开发环境启动脚本
    CLAUDE.md                 # 项目规格说明
    ```
-3. 从模板复制初始文件
+3. 从模板复制初始文件: `<LRA_PATH>/templates/`
 4. 创建 init.sh（如不存在）
 5. 创建 CLAUDE.md 模板（如不存在）
 
@@ -89,9 +89,9 @@ D:\long-running-agent-framework\
 
 | 代理类型 | 文件路径 |
 |---------|---------|
-| 编码代理 | `D:\long-running-agent-framework\agents\coding-agent-enhanced.md` |
-| 初始化代理 | `D:\long-running-agent-framework\agents\initializer-agent-enhanced.md` |
-| 测试代理 | `D:\long-running-agent-framework\agents\testing-agent.md` |
+| 编码代理 | `<LRA_PATH>/agents/coding-agent-enhanced.md` |
+| 初始化代理 | `<LRA_PATH>/agents/initializer-agent-enhanced.md` |
+| 测试代理 | `<LRA_PATH>/agents/testing-agent.md` |
 
 ## 功能实现流程
 
@@ -137,6 +137,6 @@ npm run build
 
 ## 参考文档
 
-- AI 可读文档: `D:\long-running-agent-framework\AI-CONTEXT.md`
-- 编码代理提示: `D:\long-running-agent-framework\agents\coding-agent-enhanced.md`
-- 功能列表示例: `D:\long-running-agent-framework\templates\feature-list.json`
+- AI 可读文档: `<LRA_PATH>/AI-CONTEXT.md`
+- 编码代理提示: `<LRA_PATH>/agents/coding-agent-enhanced.md`
+- 功能列表示例: `<LRA_PATH>/templates/feature-list.json`
