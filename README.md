@@ -1,8 +1,86 @@
 # Long-Running Agent Framework
 
+> AI Agent Framework for Multi-Context Window Development
+
 A framework for managing AI agents that work across multiple context windows, based on [Anthropic's research](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) on effective harnesses for long-running agents.
 
-**Reference Implementation:** [riv2025-long-horizon-coding-agent-demo](https://github.com/anthropics/riv2025-long-horizon-coding-agent-demo)
+[![GitHub](https://img.shields.io/badge/GitHub-Mati0kez/long--running--agent--framework-blue)](https://github.com/Mati0kez/long-running-agent-framework)
+
+---
+
+## 快速开始
+
+### 步骤 1: 克隆仓库
+
+```bash
+# Windows
+git clone https://github.com/Mati0kez/long-running-agent-framework.git <LRA_PATH>
+
+# Linux/macOS
+git clone https://github.com/Mati0kez/long-running-agent-framework.git <LRA_PATH>
+```
+
+> 将 `<LRA_PATH>` 替换为你的安装路径，例如：
+> - Windows: `D:\long-running-agent-framework`
+> - Linux/macOS: `/home/user/long-running-agent-framework`
+
+### 步骤 2: 安装 Skills
+
+将 `skills/` 目录中的文件复制到 Claude Code 的 skills 目录：
+
+```bash
+# Windows
+cp <LRA_PATH>\skills\*.md C:\Users\<你的用户名>\.claude\skills\
+
+# Linux/macOS
+cp <LRA_PATH>/skills/*.md ~/.claude/skills/
+```
+
+### 步骤 3: 配置路径
+
+打开复制的 skill 文件，将所有 `<LRA_PATH>` 替换为你的实际安装路径。
+
+**需要修改的文件：**
+- `lra.md`
+- `lra-install.md`
+- `lra-dev.md`
+
+### 步骤 4: 验证安装
+
+```bash
+# 测试 CLI
+<LRA_PATH>/bin/lra
+
+# 应显示使用帮助
+```
+
+### 步骤 5: 在项目中使用
+
+```bash
+# 进入你的项目目录
+cd /path/to/your/project
+
+# 初始化框架
+<LRA_PATH>/bin/lra init
+
+# 启动编码代理
+claude --prompt-file <LRA_PATH>/agents/coding-agent-enhanced.md
+```
+
+---
+
+## Skills 使用说明
+
+安装完成后，可以在 Claude Code 中使用以下命令：
+
+| 命令 | 说明 |
+|------|------|
+| `/lra init` | 初始化项目 |
+| `/lra dev` | 启动编码代理 |
+| `/lra status` | 检查项目状态 |
+| `/lra-install` | 安装/更新框架 |
+
+---
 
 ## Overview
 
